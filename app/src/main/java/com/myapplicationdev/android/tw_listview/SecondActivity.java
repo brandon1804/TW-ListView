@@ -24,8 +24,6 @@ public class SecondActivity extends AppCompatActivity {
         String year = i.getStringExtra("year");
         tvYear.setText(year);
 
-
-
     }
 
 
