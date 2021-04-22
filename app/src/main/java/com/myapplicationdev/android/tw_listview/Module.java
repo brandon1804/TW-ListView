@@ -3,15 +3,18 @@ package com.myapplicationdev.android.tw_listview;
 public class Module {
 
     private String module;
-    private String year;
-    public Module(String Module, String year) {
+    private boolean prog;
+
+    public Module(String Module, boolean prog) {
         this.module = Module;
-        this.year = year;
+        this.prog = prog;
     }
+
     public String getModule() {
         return module;
     }
-    public String getYear() {
-        return year;
+
+    public boolean isProg() {
+        return prog;
     }
-}
+}//end of class
