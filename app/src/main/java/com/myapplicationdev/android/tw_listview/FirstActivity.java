@@ -27,6 +27,8 @@ public class FirstActivity extends AppCompatActivity {
         al.add(new Year("Year 2"));
         al.add(new Year("Year 3"));
 
+        lv.setAdapter(aa);
+
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
