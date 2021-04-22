@@ -33,8 +33,7 @@ public class ModuleAdapter extends ArrayAdapter<Module> {
         tvModule = (TextView) rowView.findViewById(R.id.tvModule);
         ivModuleType = (ImageView) rowView.findViewById(R.id.ivModuleType);
 
-
-
+        
         Module currentModule = moduleList.get(position);
 
 

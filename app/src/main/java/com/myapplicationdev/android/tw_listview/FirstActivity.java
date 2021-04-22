@@ -13,37 +13,40 @@ import java.util.ArrayList;
 public class FirstActivity extends AppCompatActivity {
 
     ListView lv;
-    ArrayList<Year> al;
-    ArrayAdapter<String> aa;
+    ArrayList<String> al;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        lv = findViewById(R.id.lv);
 
-        al = new ArrayList<Year>();
-        al.add(new Year("Year 1"));
-        al.add(new Year("Year 2"));
-        al.add(new Year("Year 3"));
 
-        lv.setAdapter(aa);
+        al = new ArrayList<String>();
+        al.add("Year 1");
+        al.add("Year 2");
+        al.add("Year 3");
+
+        ArrayAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, al);
+        lv.setAdapter(adapter);
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
+
                 Intent i = new Intent(FirstActivity.this, SecondActivity.class);
                 switch( position )
                 {
                     case 0:
-                        i.putExtra(Intent.EXTRA_TEXT,"Year 1");
+                        i.putExtra("year","Year 1");
                         break;
                     case 1:
-                        i.putExtra(Intent.EXTRA_TEXT,"Year 2");
+                        i.putExtra("year","Year 2");
                         break;
                     case 2:
-                        i.putExtra(Intent.EXTRA_TEXT,"Year 3");
+                        i.putExtra("year","Year 3");
                         break;
                 }
                 startActivity(i);

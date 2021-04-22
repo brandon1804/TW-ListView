@@ -13,9 +13,9 @@ import java.util.ArrayList;
 public class SecondActivity extends AppCompatActivity {
 
     ListView lv;
-    TextView tvModule;
+    TextView tvYear;
     ImageView iv;
-    ArrayList<Module> moduleList;
+    ArrayList<Module> y1moduleList, y2moduleList, y3moduleList;
     ArrayAdapter aa;
 
 
@@ -25,19 +25,42 @@ public class SecondActivity extends AppCompatActivity {
         setContentView(R.layout.activity_second);
 
         lv = (ListView) this.findViewById(R.id.lvModule);
-        tvModule = (TextView) findViewById(R.id.tvYear);
-
-        // create module objects
-        moduleList = new ArrayList<Module>();
-        moduleList.add(new Module("C208" , true));
-        moduleList.add(new Module("C200" , false));
-        moduleList.add(new Module("C346" , true));
-
-        aa = new ModuleAdapter(this, R.layout.row, moduleList);
-        lv.setAdapter(aa);
+        tvYear = (TextView) findViewById(R.id.tvYear);
 
         Intent i = getIntent();
+        String year = i.getStringExtra("year");
+        tvYear.setText(year);
 
+        // create module objects
+        y1moduleList = new ArrayList<Module>();
+        y2moduleList = new ArrayList<Module>();
+        y3moduleList = new ArrayList<Module>();
+
+        y1moduleList.add(new Module("C105" , true));
+        y1moduleList.add(new Module("G961" , false));
+        y1moduleList.add(new Module("G107" , true));
+
+        y2moduleList.add(new Module("C348" , true));
+        y2moduleList.add(new Module("C200" , false));
+        y2moduleList.add(new Module("C346" , true));
+
+        y3moduleList.add(new Module("C347" , true));
+        y3moduleList.add(new Module("C349" , true));
+        y3moduleList.add(new Module("C302" , true));
+
+
+        if(year.equals("Year 1")){
+            aa = new ModuleAdapter(this, R.layout.row, y1moduleList);
+        }
+        else if(year.equals("Year 2")){
+            aa = new ModuleAdapter(this, R.layout.row, y2moduleList);
+        }
+        else if(year.equals("Year 3")){
+            aa = new ModuleAdapter(this, R.layout.row, y3moduleList);
+        }
+
+
+        lv.setAdapter(aa);
 
     }
 }
