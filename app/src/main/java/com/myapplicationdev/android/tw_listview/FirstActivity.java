@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class FirstActivity extends AppCompatActivity {
 
     ListView lv;
-    ArrayList<String> al;
+    ArrayList<Year> al;
     ArrayAdapter<String> aa;
 
     @Override
@@ -22,14 +22,29 @@ public class FirstActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        al = new ArrayList<String>();
-        al.add("Year 1");
+        al = new ArrayList<Year>();
+        al.add(new Year("Year 1"));
+        al.add(new Year("Year 2"));
+        al.add(new Year("Year 3"));
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(FirstActivity.this,SecondActivity.class);
-                startActivity(intent);
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Intent i = new Intent(FirstActivity.this, SecondActivity.class);
+                switch( position )
+                {
+                    case 0:
+                        i.putExtra(Intent.EXTRA_TEXT,"Year 1");
+                        break;
+                    case 1:
+                        i.putExtra(Intent.EXTRA_TEXT,"Year 2");
+                        break;
+                    case 2:
+                        i.putExtra(Intent.EXTRA_TEXT,"Year 3");
+                        break;
+                }
+                startActivity(i);
             }
         });
 
